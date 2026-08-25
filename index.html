@@ -1,0 +1,48 @@
+
+<!doctype html><html lang="zh-CN"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>微信群收益打卡</title>
+<link rel="stylesheet" href="css/app.css">
+</head><body>
+<header><h1>📈 微信群收益打卡</h1><div id="today"></div></header>
+<section class="card">
+<p id="connectionStatus" class="connection-status" role="status"></p>
+<h2>今日打卡</h2>
+<input id="name" placeholder="姓名"/>
+<input id="date" type="date"/>
+<input id="profit" type="number" placeholder="今日收益"/>
+<textarea id="remark" placeholder="备注"></textarea>
+<button onclick="App.submit()">提交收益</button>
+</section>
+<section class="card">
+<h2>🏆 排行榜</h2>
+<div class="tabs">
+<button onclick="App.rank('total')">总榜</button>
+<button onclick="App.rank('month')">月榜</button>
+<button onclick="App.rank('week')">周榜</button>
+</div>
+<table><thead><tr><th>排名</th><th>姓名</th><th>累计收益</th><th>天数</th></tr></thead>
+<tbody id="rankBody"></tbody></table>
+</section>
+<section class="card">
+<h2>👤 历史记录</h2>
+<select id="member" onchange="App.history()"></select>
+<div id="summary"></div>
+<canvas id="chart" width="700" height="180"></canvas>
+<table><thead><tr><th>日期</th><th>收益</th><th>备注</th></tr></thead>
+<tbody id="historyBody"></tbody></table>
+</section>
+<section class="card">
+<h2>📅 本月热力图</h2><div id="calendar" class="calendar"></div>
+</section>
+<section class="card">
+<button onclick="App.export()">导出 JSON</button>
+<input type="file" onchange="App.import(event)">
+</section>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/chart.js"></script>
+<script src="js/calendar.js"></script>
+<script src="js/app.js"></script>
+</body></html>
