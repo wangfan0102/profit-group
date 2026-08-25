@@ -8,20 +8,22 @@
 <section class="card">
 <p id="connectionStatus" class="connection-status" role="status"></p>
 <h2>今日打卡</h2>
-<input id="name" placeholder="姓名"/>
+<select id="name" aria-label="姓名"></select>
 <input id="date" type="date"/>
 <input id="profit" type="number" placeholder="今日收益"/>
-<textarea id="remark" placeholder="备注"></textarea>
+<textarea id="remark" placeholder="冠军宣言（可选）"></textarea>
 <button onclick="App.submit()">提交收益</button>
 </section>
 <section class="card">
-<h2>🏆 排行榜</h2>
+<div class="leaderboard-heading"><div><span class="eyebrow">PROFIT ARENA</span><h2>🏆 收益排行榜</h2></div><div id="rankPeriod" class="rank-period"></div></div>
+<div id="championNotice" class="champion-notice" hidden></div>
+<div id="leaderboardPodium" class="leaderboard-podium"></div>
 <div class="tabs">
-<button onclick="App.rank('total')">总榜</button>
-<button onclick="App.rank('month')">月榜</button>
-<button onclick="App.rank('week')">周榜</button>
+<button data-rank-mode="day" onclick="App.rank('day')">日榜</button>
+<button data-rank-mode="month" onclick="App.rank('month')">月榜</button>
+<button data-rank-mode="week" onclick="App.rank('week')">周榜</button>
 </div>
-<table><thead><tr><th>排名</th><th>姓名</th><th>累计收益</th><th>天数</th></tr></thead>
+<table><thead><tr><th>排名</th><th>姓名</th><th>收益</th><th id="rankDaysHead">天数</th><th id="rankDeclarationHead">宣言</th></tr></thead>
 <tbody id="rankBody"></tbody></table>
 </section>
 <section class="card">
@@ -29,11 +31,12 @@
 <select id="member" onchange="App.history()"></select>
 <div id="summary"></div>
 <canvas id="chart" width="700" height="180"></canvas>
-<table><thead><tr><th>日期</th><th>收益</th><th>备注</th></tr></thead>
+<table><thead><tr><th>日期</th><th>收益</th><th>宣言</th></tr></thead>
 <tbody id="historyBody"></tbody></table>
 </section>
 <section class="card">
-<h2>📅 本月热力图</h2><div id="calendar" class="calendar"></div>
+<div class="calendar-heading"><h2>📅 本月热力图</h2><select id="calendarMember" onchange="App.calendarFilter()" aria-label="热力图查看范围"></select></div>
+<div id="calendarScope" class="calendar-scope"></div><div id="calendar" class="calendar"></div>
 </section>
 <section class="card">
 <button onclick="App.export()">导出 JSON</button>

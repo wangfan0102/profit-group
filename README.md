@@ -3,7 +3,8 @@
 
 ## 功能
 - 每人每天一条收益记录（自动覆盖）
-- 总榜 / 月榜 / 周榜
+- 日榜 / 周榜 / 月榜，前三名领奖台与每日冠军宣言
+- 固定成员下拉选择与个人 / 群总收益热力图
 - 成员历史记录
 - 累计收益折线图（Canvas）
 - 月历热力图
@@ -27,4 +28,4 @@ window.PROFIT_GROUP_SUPABASE = {
 };
 ```
 
-页面会自动切换到 Supabase；如果两个值留空，则继续使用浏览器 LocalStorage。页面直接写入 `profit_records`，`members` 表可以保留但不是必需的。浏览器端只能使用 anon/publishable key，不能放 service_role key。
+页面会自动切换到 Supabase；如果两个值留空，则继续使用浏览器 LocalStorage。页面直接写入 `profit_records`，`remark` 字段用于保存每日冠军宣言，`members` 表可以保留但不是必需的。浏览器端只能使用 anon/publishable key，不能放 service_role key。
